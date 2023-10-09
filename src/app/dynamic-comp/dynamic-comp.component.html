@@ -1,0 +1,13 @@
+<div style="display: block;">
+  <p style="display: inline; margin-right: 4px;">Element test</p>
+  <input type="text" [value]="'Random value = ' + index">
+  <button style="display: inline; margin-left: 4px;" type="button" (click)="onRemoveComponent()">Remove</button>
+  <button style="display: inline; margin-left: 4px;" type="button"
+        (click)="onAddComponent()"
+        *ngIf="lastOne">
+        Add
+  </button>
+</div>
+
+
+
