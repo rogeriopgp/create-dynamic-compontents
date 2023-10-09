@@ -6,4 +6,7 @@ Example with Angular, creating dynamic components in a template.
 
 Add and remove button in the same line of the component, last dynamic component enable add button
 
+## Github pages
+https://rogeriopgp.github.io/create-dynamic-compontents/
+
 
