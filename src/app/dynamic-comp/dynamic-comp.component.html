@@ -1,13 +1,29 @@
-<div style="display: block;">
-  <p style="display: inline; margin-right: 4px;">Element test</p>
-  <input type="text" [value]="'Random value = ' + index">
-  <button style="display: inline; margin-left: 4px;" type="button" (click)="onRemoveComponent()">Remove</button>
-  <button style="display: inline; margin-left: 4px;" type="button"
-        (click)="onAddComponent()"
-        *ngIf="lastOne">
-        Add
-  </button>
+<div [formGroup]="formGroupMain">
+    <ng-container [formArrayName]="elementsName">
+        <div class="max-h-[210px] overflow-y-auto">
+          <div class="flex flex-row justify-start items-start gap-x-2 flex-wrap w-full">
+            <div class="flex-1">
+              <ng-template #viewContainerRef></ng-template>
+            </div>
+            <div class="flex-none">
+              <ng-template #viewContainerRefDeleteButton></ng-template>
+            </div>
+          </div>
+        </div>
+    </ng-container>
 </div>
 
+<div>
+  <div class="flex flex-row justify-center items-center p-2">
+    <div class="flex-1 flex flex-row justify-center">
+      <button mat-mini-fab type="button" color="primary" (click)="addElement()" matTooltip="Add new element">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="flex-none w-[60px]">
+      <p *ngIf="elements.length > 0">{{elements.length}} {{elements.length <= 1 ? ' item' : ' itens'}}</p>
+    </div>
+  </div>
+</div>
 
 

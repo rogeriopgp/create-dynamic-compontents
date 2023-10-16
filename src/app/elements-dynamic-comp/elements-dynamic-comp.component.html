@@ -1,0 +1,18 @@
+<div [formGroup]="formGroupElements">
+  <div class="flex flex-row justify-start items-start gap-x-2 flex-wrap w-full mt-2">
+    <mat-form-field class="flex-none w-[180px]" appearance="outline">
+      <mat-label>Id</mat-label>
+      <input matInput
+                type="text"
+                formControlName="id">
+       <mat-error *ngIf="formGroupElements.get('id')?.hasError('required')">Required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="flex-none w-[180px]" appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput
+                formControlName="description">
+      <mat-error *ngIf="formGroupElements.get('description')?.hasError('required')">Required</mat-error>
+    </mat-form-field>
+  </div>
+</div>
+

@@ -1,0 +1,36 @@
+<h2>Form</h2>
+<form [formGroup]="formExample" (ngSubmit)="onSubmit()">
+    <div style="max-width: 600px; padding: 10px;">
+      <div class="flex flex-row justify-start items-center gap-x-2 w-full flex-wrap mt-2">
+        <div class="flex-1">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput
+                     formControlName="name">
+            <mat-error *ngIf="formExample.get('name')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="flex-1">
+          <mat-form-field appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput
+                     formControlName="age">
+            <mat-error *ngIf="formExample.get('age')?.hasError('required')">Required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-medium">Dynamic Components</h3>
+        <app-dynamic-comp
+            [formGroupMain]="formExample"
+            [dynamicComponent]="elementComp"
+            elementsName="elements2">
+        </app-dynamic-comp>
+      </div>
+      <hr style="margin-bottom: 10px; margin-top: 26px;">
+      <div class="flex flex-row justify-end">
+          <button mat-raised-button color="primary" type="submit">Save</button>
+      </div>
+    </div>
+</form>
+

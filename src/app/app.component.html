@@ -1,5 +1,26 @@
-<h1>Dynamic Component</h1>
-<button type="button" routerLink="/">Home</button>
- &nbsp;
-<button type="button" routerLink="/container">Container to Add</button>
-<router-outlet></router-outlet>
+<div class="flex flex-col justify-center items-center">
+  <h1>Dynamic Component</h1>
+  <div class="flex flex-row justify-center items-center gap-x-2">
+    <button
+    type="button"
+    mat-raised-button
+    routerLink="/"
+    routerLinkActive
+    #homeBtn="routerLinkActive"
+    [disabled]="homeBtn.isActive"
+    [routerLinkActiveOptions]="{exact:true}">
+        Home
+    </button>
+    <button
+        type="button"
+        mat-raised-button
+        routerLink="/form"
+        routerLinkActive
+        #containerBtn="routerLinkActive"
+        [disabled]="containerBtn.isActive">
+        Form - Dynamic Component
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+
