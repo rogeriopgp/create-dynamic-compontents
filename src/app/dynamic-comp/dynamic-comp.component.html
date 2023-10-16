@@ -16,12 +16,12 @@
 <div>
   <div class="flex flex-row justify-center items-center p-2">
     <div class="flex-1 flex flex-row justify-center">
-      <button mat-mini-fab type="button" color="primary" (click)="addElement()" matTooltip="Add new element">
+      <button mat-mini-fab type="button" color="primary" (click)="addElement()" [matTooltip]="messageAddNewElement">
         <mat-icon>add</mat-icon>
       </button>
     </div>
-    <div class="flex-none w-[60px]">
-      <p *ngIf="elements.length > 0">{{elements.length}} {{elements.length <= 1 ? ' item' : ' itens'}}</p>
+    <div class="flex-initial min-w-[60px]">
+      <p *ngIf="elements.length > 0">{{elements.length}} {{elements.length <= 1 ? descriptionQuantitySingular : descriptionQuantityPlural}}</p>
     </div>
   </div>
 </div>

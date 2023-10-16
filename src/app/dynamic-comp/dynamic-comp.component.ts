@@ -14,6 +14,11 @@ export class DynamicCompComponent implements OnDestroy {
   @Input() formGroupMain!: FormGroup;
   @Input() dynamicComponent!: Type<DynamicCompBaseComponent>;
   @Input() elementsName: string = "elements";
+  @Input() messageAddNewElement: string = "Adicionar novo item";
+  @Input() messageDeleteNewElement: string = "Excluir item";
+  @Input() forceKeepOneElement: boolean = true;
+  @Input() descriptionQuantitySingular: string = "Item";
+  @Input() descriptionQuantityPlural: string = "Itens";
 
   @ViewChild("viewContainerRef", { read: ViewContainerRef }) vcr!: ViewContainerRef;
   @ViewChild("viewContainerRefDeleteButton", { read: ViewContainerRef }) vcrDeleteButton!: ViewContainerRef;
@@ -22,6 +27,12 @@ export class DynamicCompComponent implements OnDestroy {
 
   ngOnInit(): void {
       this.formGroupMain.addControl(this.elementsName, new FormArray([]));
+
+      if (this.forceKeepOneElement) {
+          setTimeout(() => {
+              this.addElement();
+          }, 0);
+      }
   }
 
   ngOnDestroy(): void {
@@ -33,6 +44,9 @@ export class DynamicCompComponent implements OnDestroy {
   }
 
   deleteElement(value: DynamicDeleteButtonValues) {
+    if (this.forceKeepOneElement && this.elements.length == 1) {
+        return;
+    }
     this.elements.removeAt(this.elements.controls.indexOf(value.formGroup));
     const indexDynamicComp = this.vcr.indexOf(value.dynamicComponent.hostView);
     if (indexDynamicComp != -1)  {
@@ -54,6 +68,7 @@ export class DynamicCompComponent implements OnDestroy {
     refDeleteButton.instance.formGroupDynamicComponent = formGroupDynamicComp;
     refDeleteButton.instance.dynamicComponent = ref;
     refDeleteButton.instance.deleteButtonComponent = refDeleteButton;
+    refDeleteButton.instance.messageToolTipDeleteButton = this.messageDeleteNewElement;
     this.subs.push(refDeleteButton.instance.deleteClick.subscribe((value: DynamicDeleteButtonValues) => this.deleteElement(value)));
   }
 

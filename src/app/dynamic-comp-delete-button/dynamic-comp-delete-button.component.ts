@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ComponentRef } from '@angular/core';
+import { Component, EventEmitter, Output, ComponentRef, Input } from '@angular/core';
 import { DynamicCompBaseComponent } from '../dynamic-comp-base/dynamic-comp-base';
 import { FormGroup } from '@angular/forms';
 
@@ -15,6 +15,7 @@ export interface DynamicDeleteButtonValues {
 export class DynamicCompDeleteButtonComponent {
 
   @Output() deleteClick: EventEmitter<DynamicDeleteButtonValues> = new EventEmitter();
+  @Input() messageToolTipDeleteButton: string = "Excluir item";
 
   formGroupDynamicComponent!: FormGroup<any>;
   dynamicComponent!: ComponentRef<DynamicCompBaseComponent>;
