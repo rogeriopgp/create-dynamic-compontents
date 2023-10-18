@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Example with Angular, creating dynamic components in a template.
 
-Add and remove button in the same line of the component, last dynamic component enable add button
+Simple example of relationship many to many in a Crud environment with dynamic components.
 
 ## Github pages
 https://rogeriopgp.github.io/create-dynamic-compontents/
